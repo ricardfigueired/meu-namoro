@@ -1,87 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Nosso Amor</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosso Amor 💖</title>
   <style>
     body {
-      background: linear-gradient(to bottom, #fff, #ffe4ec);
-      color: #800040;
-      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(white, pink);
+      font-family: 'Arial', sans-serif;
       text-align: center;
-      padding: 30px;
+      color: #d63384;
+      margin: 0;
+      padding: 0 15px;
+      box-sizing: border-box;
     }
 
-    h1, h2, p {
-      margin: 10px 0;
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
     }
 
-    .contador {
-      font-size: 2em;
-      font-weight: bold;
-      margin-bottom: 20px;
+    .foto {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 20px;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
     }
 
     .mensagem {
-      font-size: 1.2em;
-      margin: 20px auto;
-      max-width: 700px;
-      line-height: 1.6;
+      font-size: 1.3em;
+      margin: 20px 0;
     }
 
-    .galeria {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
+    .contador {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 10px;
     }
 
-    .galeria img {
-      max-width: 300px;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8em;
+      }
 
-    .musica {
-      margin-top: 30px;
-    }
+      .mensagem {
+        font-size: 1.1em;
+      }
 
-    iframe {
-      border-radius: 12px;
-      width: 80%;
-      max-width: 480px;
-      height: 270px;
+      .contador {
+        font-size: 1.2em;
+      }
     }
   </style>
 </head>
 <body>
-
-  <h1>Nosso Amor</h1>
-  <div class="contador" id="contadorDias"></div>
-
-  <div class="mensagem">
-    Desde 25 de fevereiro de 2025, nossos dias têm sido mais doces, nossos sorrisos mais sinceros, e nossos corações, mais completos. Cada momento ao seu lado é um presente, cada memória, uma prova de que o amor verdadeiro existe. Que o tempo siga sendo nosso aliado, contando histórias lindas como a nossa. Te amo, hoje e sempre.
-  </div>
-
-  <div class="galeria">
-    <img src="imagem1.jpg" alt="Foto 1">
-    <img src="imagem2.jpg" alt="Foto 2">
-    <img src="imagem3.jpg" alt="Foto 3">
-    <img src="imagem4.jpg" alt="Foto 4">
-  </div>
-
-  <div class="musica">
-    <h2>Nossa Música: Aliança - Tribalistas</h2>
-    <iframe src="https://www.youtube.com/embed/3JiMr-HgHJ8?rel=0" frameborder="0" allowfullscreen></iframe>
+  <div class="container">
+    <img src="namoro_foto.jpg" alt="Nossa Foto" class="foto" />
+    <h1>Nosso Amor 💖</h1>
+    <div class="mensagem">Eu lhe amo! Mais que ontem e menos que amanhã!</div>
+    <div class="contador" id="contador"></div>
   </div>
 
   <script>
     const inicio = new Date("2025-02-25T19:46:00");
-    const agora = new Date();
-    const dias = Math.floor((agora - inicio) / (1000 * 60 * 60 * 24));
-    document.getElementById("contadorDias").textContent = `Estamos juntos há ${dias} dias`;
-  </script>
 
+    function atualizarContador() {
+      const agora = new Date();
+      const diff = agora - inicio;
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("contador").innerText = 
+        `${dias} dias, ${horas}h ${minutos}m ${segundos}s juntos`;
+    }
+
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
+  </script>
 </body>
 </html>
