@@ -11,19 +11,18 @@
       text-align: center;
       color: #d63384;
       margin: 0;
-      padding: 0 15px;
-      box-sizing: border-box;
+      padding: 0;
     }
 
     .container {
-      max-width: 600px;
+      max-width: 500px;
       margin: 40px auto;
-      padding: 20px 10px;
+      padding: 20px;
     }
 
     .foto {
       width: 100%;
-      max-width: 250px;
+      max-width: 280px;
       border-radius: 20px;
       border: 4px solid #fff;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -31,7 +30,7 @@
 
     h1 {
       font-size: 2.2em;
-      margin-bottom: 10px;
+      margin: 20px 0 10px;
     }
 
     .mensagem {
@@ -45,18 +44,21 @@
       margin-top: 10px;
     }
 
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.8em;
-      }
+    .musica {
+      margin-top: 40px;
+    }
 
-      .mensagem {
-        font-size: 1.1em;
-      }
+    iframe {
+      width: 100%;
+      max-width: 320px;
+      height: 180px;
+      border-radius: 12px;
+    }
 
-      .contador {
-        font-size: 1.2em;
-      }
+    .musica p {
+      font-size: 0.95em;
+      margin-top: 8px;
+      color: #a03a6d;
     }
   </style>
 </head>
@@ -67,15 +69,16 @@
     <div class="mensagem">Eu lhe amo! Mais que ontem e menos que amanhã!</div>
     <div class="contador" id="contador"></div>
 
-    <div style="margin-top: 30px;">
-      <iframe width="300" height="170"
-        src="https://www.youtube.com/embed/3JiMr-HgHJ8?autoplay=1&loop=1&playlist=3JiMr-HgHJ8&mute=1"
+    <div class="musica">
+      <h2>Nossa música 🎶</h2>
+      <iframe
+        src="https://www.youtube.com/embed/3JiMr-HgHJ8?autoplay=0&loop=1&playlist=3JiMr-HgHJ8"
         title="Aliança - Tribalistas"
         frameborder="0"
-        allow="autoplay; encrypted-media"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
-      <p style="font-size: 0.9em; color: #a03a6d;">Clique no play para ouvir nossa música 💗</p>
+      <p>Toque e sinta a vibe dessa música com a gente 💞</p>
     </div>
   </div>
 
@@ -91,12 +94,10 @@
       const minutos = Math.floor((diff / (1000 * 60)) % 60);
       const segundos = Math.floor((diff / 1000) % 60);
 
-      document.getElementById("contador").innerText = 
+      document.getElementById("contador").innerText =
         `${dias} dias, ${horas}h ${minutos}m ${segundos}s juntos`;
     }
 
     setInterval(atualizarContador, 1000);
     atualizarContador();
   </script>
-</body>
-</html>
