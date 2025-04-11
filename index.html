@@ -15,44 +15,43 @@
     }
 
     .container {
-      padding: 20px;
+      margin-top: 40px;
     }
 
-    img {
-      width: 300px;
+    .foto {
+      width: 250px;
       border-radius: 20px;
       border: 4px solid #fff;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     h1 {
-      font-size: 2em;
-      margin-top: 20px;
+      font-size: 2.2em;
+      margin-bottom: 10px;
     }
 
     .mensagem {
-      font-size: 1.2em;
+      font-size: 1.3em;
       margin: 20px 0;
-      color: #b03060;
     }
 
-    .tempo {
-      font-size: 1.4em;
+    .contador {
+      font-size: 1.5em;
       font-weight: bold;
-      color: #ff69b4;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="namoro_foto.jpg" alt="Nossa foto linda">
-    <h1>Desde 25/02 às 19h46 💖</h1>
-    <p class="mensagem">Eu lhe amo! Mais que ontem e menos que amanhã!</p>
-    <p class="tempo" id="contador"></p>
+    <img src="namoro_foto.jpg" alt="Nossa Foto" class="foto" />
+    <h1>Nosso Amor 💖</h1>
+    <div class="mensagem">Eu lhe amo! Mais que ontem e menos que amanhã!</div>
+    <div class="contador" id="contador"></div>
   </div>
 
   <script>
-    const inicio = new Date("2024-02-25T19:46:00");
+    const inicio = new Date("2025-02-25T19:46:00");
 
     function atualizarContador() {
       const agora = new Date();
@@ -63,8 +62,8 @@
       const minutos = Math.floor((diff / (1000 * 60)) % 60);
       const segundos = Math.floor((diff / 1000) % 60);
 
-      document.getElementById("contador").innerText =
-        `${dias} dias, ${horas}h ${minutos}min ${segundos}s juntos 💘`;
+      document.getElementById("contador").innerText = 
+        `${dias} dias, ${horas}h ${minutos}m ${segundos}s juntos`;
     }
 
     setInterval(atualizarContador, 1000);
