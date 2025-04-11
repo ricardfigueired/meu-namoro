@@ -11,15 +11,19 @@
       text-align: center;
       color: #d63384;
       margin: 0;
-      padding: 0;
+      padding: 0 15px;
+      box-sizing: border-box;
     }
 
     .container {
-      margin-top: 40px;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px 10px;
     }
 
     .foto {
-      width: 250px;
+      width: 100%;
+      max-width: 250px;
       border-radius: 20px;
       border: 4px solid #fff;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -40,6 +44,20 @@
       font-weight: bold;
       margin-top: 10px;
     }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .mensagem {
+        font-size: 1.1em;
+      }
+
+      .contador {
+        font-size: 1.2em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -48,6 +66,17 @@
     <h1>Nosso Amor 💖</h1>
     <div class="mensagem">Eu lhe amo! Mais que ontem e menos que amanhã!</div>
     <div class="contador" id="contador"></div>
+
+    <div style="margin-top: 30px;">
+      <iframe width="300" height="170"
+        src="https://www.youtube.com/embed/3JiMr-HgHJ8?autoplay=1&loop=1&playlist=3JiMr-HgHJ8&mute=1"
+        title="Aliança - Tribalistas"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <p style="font-size: 0.9em; color: #a03a6d;">Clique no play para ouvir nossa música 💗</p>
+    </div>
   </div>
 
   <script>
