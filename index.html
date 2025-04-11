@@ -1,85 +1,87 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Momentos Juntos</title>
+  <title>Nosso Amor</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #fff0f5;
-      color: #ff69b4;
+      background: linear-gradient(to bottom, #fff, #ffe4ec);
+      color: #800040;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1, h2, p {
+      margin: 10px 0;
+    }
+
+    .contador {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .mensagem {
+      font-size: 1.2em;
+      margin: 20px auto;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    .galeria {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
+      gap: 15px;
+      margin-top: 30px;
     }
 
-    .carousel {
-      width: 90%;
-      max-width: 500px;
-      overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+    .galeria img {
+      max-width: 300px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .slides {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      width: 200%;
+    .musica {
+      margin-top: 30px;
     }
 
-    .slides img {
-      width: 100%;
-      object-fit: cover;
-    }
-
-    .navigation {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-    }
-
-    .bar {
-      width: 10px;
-      height: 10px;
-      margin: 0 5px;
-      background-color: #ffb6c1;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .bar.active {
-      background-color: #ff1493;
+    iframe {
+      border-radius: 12px;
+      width: 80%;
+      max-width: 480px;
+      height: 270px;
     }
   </style>
 </head>
 <body>
-  <div>
-    <div class="carousel">
-      <div class="slides" id="slides">
-        <img src="namoro1.jpeg" alt="Foto 1">
-        <img src="image.png" alt="Foto 2">
-      </div>
-    </div>
-    <div class="navigation">
-      <div class="bar active" onclick="moveSlide(0)"></div>
-      <div class="bar" onclick="moveSlide(1)"></div>
-    </div>
+
+  <h1>Nosso Amor</h1>
+  <div class="contador" id="contadorDias"></div>
+
+  <div class="mensagem">
+    Desde 25 de fevereiro de 2025, nossos dias têm sido mais doces, nossos sorrisos mais sinceros, e nossos corações, mais completos. Cada momento ao seu lado é um presente, cada memória, uma prova de que o amor verdadeiro existe. Que o tempo siga sendo nosso aliado, contando histórias lindas como a nossa. Te amo, hoje e sempre.
+  </div>
+
+  <div class="galeria">
+    <img src="imagem1.jpg" alt="Foto 1">
+    <img src="imagem2.jpg" alt="Foto 2">
+    <img src="imagem3.jpg" alt="Foto 3">
+    <img src="imagem4.jpg" alt="Foto 4">
+  </div>
+
+  <div class="musica">
+    <h2>Nossa Música: Aliança - Tribalistas</h2>
+    <iframe src="https://www.youtube.com/embed/3JiMr-HgHJ8?rel=0" frameborder="0" allowfullscreen></iframe>
   </div>
 
   <script>
-    let currentSlide = 0;
-    function moveSlide(index) {
-      const slides = document.getElementById('slides');
-      slides.style.transform = 'translateX(' + (-100 * index) + '%)';
-      document.querySelectorAll('.bar').forEach((bar, i) => {
-        bar.classList.toggle('active', i === index);
-      });
-      currentSlide = index;
-    }
+    const inicio = new Date("2025-02-25T19:46:00");
+    const agora = new Date();
+    const dias = Math.floor((agora - inicio) / (1000 * 60 * 60 * 24));
+    document.getElementById("contadorDias").textContent = `Estamos juntos há ${dias} dias`;
   </script>
+
 </body>
 </html>
