@@ -1,91 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nosso Amor 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momentos Juntos</title>
   <style>
     body {
-      background: linear-gradient(white, pink);
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      color: #d63384;
       margin: 0;
-      padding: 0 15px;
-      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+      background-color: #fff0f5;
+      color: #ff69b4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
     }
 
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-
-    .foto {
-      width: 100%;
-      max-width: 250px;
+    .carousel {
+      width: 90%;
+      max-width: 500px;
+      overflow: hidden;
       border-radius: 20px;
-      border: 4px solid #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
     }
 
-    h1 {
-      font-size: 2.2em;
-      margin-bottom: 10px;
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 200%;
     }
 
-    .mensagem {
-      font-size: 1.3em;
-      margin: 20px 0;
+    .slides img {
+      width: 100%;
+      object-fit: cover;
     }
 
-    .contador {
-      font-size: 1.5em;
-      font-weight: bold;
+    .navigation {
+      display: flex;
+      justify-content: center;
       margin-top: 10px;
     }
 
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.8em;
-      }
+    .bar {
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      background-color: #ffb6c1;
+      border-radius: 50%;
+      cursor: pointer;
+    }
 
-      .mensagem {
-        font-size: 1.1em;
-      }
-
-      .contador {
-        font-size: 1.2em;
-      }
+    .bar.active {
+      background-color: #ff1493;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="namoro_foto.jpg" alt="Nossa Foto" class="foto" />
-    <h1>Nosso Amor 💖</h1>
-    <div class="mensagem">Eu lhe amo! Mais que ontem e menos que amanhã!</div>
-    <div class="contador" id="contador"></div>
+  <div>
+    <div class="carousel">
+      <div class="slides" id="slides">
+        <img src="namoro1.jpeg" alt="Foto 1">
+        <img src="image.png" alt="Foto 2">
+      </div>
+    </div>
+    <div class="navigation">
+      <div class="bar active" onclick="moveSlide(0)"></div>
+      <div class="bar" onclick="moveSlide(1)"></div>
+    </div>
   </div>
 
   <script>
-    const inicio = new Date("2025-02-25T19:46:00");
-
-    function atualizarContador() {
-      const agora = new Date();
-      const diff = agora - inicio;
-
-      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutos = Math.floor((diff / (1000 * 60)) % 60);
-      const segundos = Math.floor((diff / 1000) % 60);
-
-      document.getElementById("contador").innerText = 
-        `${dias} dias, ${horas}h ${minutos}m ${segundos}s juntos`;
+    let currentSlide = 0;
+    function moveSlide(index) {
+      const slides = document.getElementById('slides');
+      slides.style.transform = 'translateX(' + (-100 * index) + '%)';
+      document.querySelectorAll('.bar').forEach((bar, i) => {
+        bar.classList.toggle('active', i === index);
+      });
+      currentSlide = index;
     }
-
-    setInterval(atualizarContador, 1000);
-    atualizarContador();
   </script>
 </body>
 </html>
