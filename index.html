@@ -13,6 +13,7 @@
       color: #d63384;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
 
     .container {
@@ -48,6 +49,12 @@
       margin: 20px 0;
       color: #6e1747;
       line-height: 1.5;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
 
     #contador {
@@ -65,6 +72,8 @@
 
     .musica {
       margin-top: 40px;
+      opacity: 0;
+      animation: fadeIn 3s forwards 1s;
     }
 
     iframe {
@@ -78,6 +87,7 @@
       font-size: 0.95em;
       margin-top: 8px;
       color: #a03a6d;
+      animation: fadeIn 3s forwards 2s;
     }
 
     a.botao {
@@ -90,6 +100,7 @@
       text-decoration: none;
       font-weight: bold;
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
     }
 
     a.botao:hover {
@@ -109,20 +120,21 @@
 
     <div id="contador"></div>
 
-   <div class="musica">
+    <div class="musica">
       <h2>🎶 Nossa música de hoje 🎶</h2>
       <iframe 
-        src="https://www.youtube.com/embed/ei2-RjJDBHc" 
+        src="https://www.youtube.com/embed/ei2-RjJDBHc?autoplay=1&loop=1&playlist=ei2-RjJDBHc" 
         title="Parabéns da Xuxa" 
         frameborder="0" 
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen>
       </iframe>
-      <p>Solta o som do Parabéns da Xuxa! 🥳</p>
+      <p>Solta o som do Parabéns da Galinha pintadinha! 🥳</p>
       <a href="https://www.youtube.com/watch?v=ei2-RjJDBHc&list=RDei2-RjJDBHc&start_radio=1" 
          target="_blank" class="botao">
          Ouvir no YouTube 🎧
       </a>
+    </div>
   </div>
 
   <!-- Script do contador -->
@@ -151,19 +163,23 @@
     atualizarContagem();
   </script>
 
-  <!-- Script do confete -->
+  <!-- Script do confete contínuo -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
     function soltarConfete() {
       confetti({
-        particleCount: 250,
+        particleCount: 150,
         spread: 120,
         origin: { y: 0.6 }
       });
     }
 
-    // dispara confete ao abrir
-    window.onload = soltarConfete;
+    // Dispara confete ao abrir
+    window.onload = () => {
+      soltarConfete();
+      // Confete contínuo a cada 2 segundos
+      setInterval(soltarConfete, 2000);
+    }
   </script>
 </body>
 </html>
