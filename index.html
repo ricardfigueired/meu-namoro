@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nosso Amor</title>
+  <title>Aniversário da Minha Princesa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(white, pink);
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
       font-family: 'Arial', sans-serif;
       text-align: center;
       color: #d63384;
@@ -15,7 +16,8 @@
     }
 
     .container {
-      max-width: 500px;
+      width: 90%;
+      max-width: 550px;
       margin: 40px auto;
       padding: 20px;
     }
@@ -25,23 +27,40 @@
       max-width: 280px;
       border-radius: 20px;
       border: 4px solid #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .foto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.3);
     }
 
     h1 {
-      font-size: 2.2em;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8em;
       margin: 20px 0 10px;
+      color: #a0296d;
     }
 
     .mensagem {
       font-size: 1.3em;
       margin: 20px 0;
+      color: #6e1747;
+      line-height: 1.5;
     }
 
-    .contador {
+    #contador {
       font-size: 1.5em;
       font-weight: bold;
       margin-top: 10px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); color: #d63384; }
+      50% { transform: scale(1.08); color: #ff4da6; }
+      100% { transform: scale(1); color: #d63384; }
     }
 
     .musica {
@@ -60,34 +79,62 @@
       margin-top: 8px;
       color: #a03a6d;
     }
+
+    a.botao {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #d63384;
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    a.botao:hover {
+      background: #ff4da6;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="namoro_foto.jpg" alt="Nossa Foto" class="foto" />
-    <h1>Nosso Amor 💖</h1>
-    <div class="mensagem">Vai ter que me amar enquanto esse relógio contar!!!</div>
-    <div class="contador" id="contador"></div>
+    <img src="foto_aniversario.jpg" alt="Foto dela" class="foto" />
+    <h1>Feliz Aniversário, Meu Amor 🎂🎈</h1>
+    <div class="mensagem">
+      Hoje o mundo celebra você, mas eu tenho a sorte de comemorar sua vida todos os dias 💕  
+      Obrigado por existir e por me deixar estar ao seu lado.  
+      Que cada segundo seja repleto de amor, saúde e sonhos realizados!  
+    </div>
+
+    <div id="contador"></div>
 
     <div class="musica">
-      <h2>Nossa música 💞🎶💞</h2>
+      <h2>🎶 Nossa música de hoje 🎶</h2>
       <iframe
-        src="https://www.youtube.com/embed/3JiMr-HgHJ8?autoplay=0&loop=1&playlist=3JiMr-HgHJ8"
-        title="Aliança - Tribalistas"
+        src="https://www.youtube.com/embed/owFQpJm3nV0?autoplay=0&loop=1&playlist=owFQpJm3nV0"
+        title="Parabéns da Xuxa"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
-      <p>Toque e escute a nossa música!!💞</p>
+      <p>Solta o som do Parabéns da Xuxa! 🥳</p>
+      <a href="https://youtu.be/owFQpJm3nV0" target="_blank" class="botao">Ouvir no YouTube 🎧</a>
     </div>
   </div>
 
+  <!-- Script do contador -->
   <script>
-    const inicio = new Date("2025-02-25T19:46:00");
+    const aniversario = new Date("2025-08-28T00:00:00");
 
-    function atualizarContador() {
+    function atualizarContagem() {
       const agora = new Date();
-      const diff = agora - inicio;
+      const diff = aniversario - agora;
+
+      if (diff <= 0) {
+        document.getElementById("contador").innerText = "🎉 Chegou o seu dia! Feliz Aniversário, Amor! 🎂";
+        return;
+      }
 
       const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
       const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
@@ -95,11 +142,26 @@
       const segundos = Math.floor((diff / 1000) % 60);
 
       document.getElementById("contador").innerText =
-        `${dias} dias, ${horas}h ${minutos}m ${segundos}s juntos`;
+        `Faltam ${dias} dias, ${horas}h ${minutos}m ${segundos}s para seu aniversário 🎈`;
     }
 
-    setInterval(atualizarContador, 1000);
-    atualizarContador();
+    setInterval(atualizarContagem, 1000);
+    atualizarContagem();
+  </script>
+
+  <!-- Script do confete -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    function soltarConfete() {
+      confetti({
+        particleCount: 250,
+        spread: 120,
+        origin: { y: 0.6 }
+      });
+    }
+
+    // dispara confete ao abrir
+    window.onload = soltarConfete;
   </script>
 </body>
 </html>
